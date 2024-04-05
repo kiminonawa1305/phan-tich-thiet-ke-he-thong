@@ -1,6 +1,5 @@
 package controller;
 
-import dao.DAOAccount;
 import model.Account;
 import model.VerifyAccount;
 import service.AccountService;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "signInAccount", value = "/signInAccount")
+@WebServlet(name = "SignInAccount", value = "/sign-in-account")
 public class SignInAccount extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
@@ -44,11 +43,11 @@ public class SignInAccount extends HttpServlet {
                     if(!account.isStatus()){
                         err = "Tài khoản của bạn đã bị cấm!";
                     }else {
-                        VerifyAccount vrf = AccountService.getInstance().getVrfOfAccount(account.getId());
+                        VerifyAccount vrf = AccountService.getInstance().getVerifyOfAccount(account.getId());
                         account.setVerifyAccount(vrf);
                         HttpSession session = request.getSession();
                         session.setAttribute("account", account);
-                        response.sendRedirect("homePage");
+                        response.sendRedirect("./");
                         return;
                     }
                 } else {

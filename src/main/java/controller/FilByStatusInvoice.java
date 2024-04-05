@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 
-@WebServlet(name = "FilByStatus", value = "/filByStatus")
+@WebServlet(name = "FilByStatusInvoice", value = "/fil-by-status")
 public class FilByStatusInvoice extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

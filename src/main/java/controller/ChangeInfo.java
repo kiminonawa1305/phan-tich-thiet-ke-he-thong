@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 
-@WebServlet(name = "changeInfo", value = "/changeInfo")
+@WebServlet(name = "ChangeInfo", value = "/change-info")
 public class ChangeInfo extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
@@ -51,10 +51,10 @@ public class ChangeInfo extends HttpServlet {
         } else {
 
             Account accountNew = new Account(account.getId(), name, email, phoneNumber, gender, birthDay, address, addressReceive);
-            VerifyAccount vrf = AccountService.getInstance().getVrfOfAccount(account.getId());
+            VerifyAccount vrf = AccountService.getInstance().getVerifyOfAccount(account.getId());
             accountNew.setVerifyAccount(vrf);
             session.setAttribute("account", accountNew);
-            if (AccountService.getInstance().updateInfor(accountNew) > 0) {
+            if (AccountService.getInstance().updateInfo(accountNew) > 0) {
                 res = "Cập nhật thành công!";
             } else {
                 res = "Cập nhật thất bại!";

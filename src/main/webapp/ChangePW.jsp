@@ -30,15 +30,12 @@
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
-<%
-    String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-%>
 <header>
     <div class="container-fluid bgcolor-orange">
         <div class="container ">
             <div class="row ">
                 <div class="col-md-9 col-sm-9 col-8 col-4 d-flex align-items-center  ">
-                    <a class="nav-link" href="<%=url%>/homePage"> <img style="width: 150px" src="image/logoWeb.png">
+                    <a class="nav-link" href="home-page"> <img style="width: 150px" src="image/logoWeb.png">
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-3 col-4 py-3 px-0 d-flex align-items-center justify-content-end">
@@ -114,7 +111,7 @@
     } else {
         if (account == null) {
     %>
-    <div class="container p-0 mgt text-center fw-bold">Bạn chưa đăng nhập! <a href=<%=url%>/SignIn.jsp>Đăng nhập</a>
+    <div class="container p-0 mgt text-center fw-bold">Bạn chưa đăng nhập! <a href=SignIn.jsp>Đăng nhập</a>
     </div>
     <%
             }

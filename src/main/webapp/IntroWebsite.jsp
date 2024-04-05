@@ -3,7 +3,7 @@
 <%@ page import="model.Account" %>
 <%@ page import="model.Cart" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,11 +32,6 @@
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
-<%
-    String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-            + request.getContextPath();
-%>
-<!--header-->
 <header>
     <jsp:include page="Header.jsp"></jsp:include>
 </header>
@@ -49,8 +44,10 @@
 %>
 <div class="container mgt">
     <%String res = (String) request.getAttribute("res");%>
-    <span id ="res"><%=(res == null)?"":res%></span>
-    <a href="<%=url%>/homePage" class="color-gray lbhv text-decoration-none">Trang chủ  <i class="fa fa-angle-right color-gray" aria-hidden="true"></i>  </a> <span class="text-color">Giới thiệu</span>
+    <span id="res"><%=(res == null) ? "" : res%></span>
+    <a href="home-page" class="color-gray lbhv text-decoration-none">Trang chủ <i class="fa fa-angle-right color-gray"
+                                                                                  aria-hidden="true"></i> </a> <span
+        class="text-color">Giới thiệu</span>
     <div class="mt-3" id="para">
         <div id="Part2">
             <h5> GIỚI THIỆU </h5>
@@ -85,12 +82,16 @@
     </div>
     <div id="policy">
         <h5> CHÍNH SÁCH MUA HÀNG
-            <%if(account.getRole() == 0) {%>
-            <button class="editPolicy btnAdd bgcolor bd-full me-1"><i class="fa fa-pencil text-color" data-bs-toggle="modal" data-bs-target="#editPolicy"></i></button>
+            <%if (account != null && account.getRole() == 0) {%>
+            <button class="editPolicy btnAdd bgcolor bd-full me-1"><i class="fa fa-pencil text-color"
+                                                                      data-bs-toggle="modal"
+                                                                      data-bs-target="#editPolicy"></i></button>
             <%}%>
         </h5>
-        <p><strong>Bảo hành:</strong> <span id="contentGuarantee"><%=i.getGuarantee()%></span> tháng kể từ ngày mua hàng.</p>
-        <p><strong>Đổi trả:</strong> trong vòng <span id="exchangeProduct"><%=i.getExchange() %></span> tháng kể từ ngày mua hàng, với điều
+        <p><strong>Bảo hành:</strong> <span id="contentGuarantee"><%=i.getGuarantee()%></span> tháng kể từ ngày mua
+            hàng.</p>
+        <p><strong>Đổi trả:</strong> trong vòng <span id="exchangeProduct"><%=i.getExchange() %></span> tháng kể từ ngày
+            mua hàng, với điều
             kiện là hàng hóa bị lỗi khi vận chuyển hoặc do nhà sản xuất, chúng tôi sẽ không chịu trách nhiệm đổi trả
             hàng hóa nếu lỗi là do phía khách hàng.</p>
     </div>
@@ -99,22 +100,25 @@
         <div class="modal-dialog modal-sm ">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form class="form " action="editPolicy" method="post" onsubmit="return editGua()">
+                    <form class="form " action="edit-policy" method="post" onsubmit="return editGua()">
                         <input type="hidden" name="id" value="<%= i.getId() %>">
                         <div class="row px-2">
                             <div class=" text-end">
-                                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close" data-bs-target="#editPolicy"></button>
+                                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"
+                                        data-bs-target="#editPolicy"></button>
                             </div>
                             <h5 class="text-center">CHỈNH SỬA CHÍNH SÁCH</h5>
                             <hr>
                             <div class="col-md-12 m-auto">
                                 <div class="mb-3 ">
                                     <label class="form-label pe-3" for="monthGua">Bảo hành</label>
-                                    <input type="number" class="month" id="monthGua" name="monthGua" value="<%= i.getGuarantee() %>"> tháng
+                                    <input type="number" class="month" id="monthGua" name="monthGua"
+                                           value="<%= i.getGuarantee() %>"> tháng
                                 </div>
                                 <div class="mb-3 ">
                                     <label class="form-label pe-3" for="monthChange">Đổi trả</label>
-                                    <input type="number" class="month" id="monthChange" name="monthChange" value="<%= i.getExchange() %>"> tháng
+                                    <input type="number" class="month" id="monthChange" name="monthChange"
+                                           value="<%= i.getExchange() %>"> tháng
                                 </div>
                             </div>
                             <div class="row p-0">
@@ -133,8 +137,11 @@
     <!--end edit policy-->
     <div id="contact">
         <h5> THÔNG TIN LIÊN HỆ
-            <%if(account.getRole() == 0) {%>
-            <button class="editContact btnAdd bgcolor bd-full me-1"><i class="fa fa-pencil text-color" title="Chỉnh sửa thông tin liên hệ" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#editContact"></i></button>
+            <%if (account!= null && account.getRole() == 0) {%>
+            <button class="editContact btnAdd bgcolor bd-full me-1"><i class="fa fa-pencil text-color"
+                                                                       title="Chỉnh sửa thông tin liên hệ"
+                                                                       aria-hidden="true" data-bs-toggle="modal"
+                                                                       data-bs-target="#editContact"></i></button>
             <%}%>
         </h5>
         <p><strong>Địa chỉ:</strong> <span id="address"><%=i.getAddress()%></span>.
@@ -147,7 +154,7 @@
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form class="form " action="editContact" method="post" onsubmit="return editContact()">
+                    <form class="form " action="edit-contact" method="post" onsubmit="return editContact()">
                         <input type="hidden" name="id" value="<%= i.getId()%>">
                         <div class="row px-2">
                             <span class="d-none" id="id"></span>
@@ -159,16 +166,22 @@
                             <hr>
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Địa chỉ</label><span class="text-danger" id="errEditAddress"></span>
-                                    <input type="text" class="form-control" id="editAddress" name="editAddress" value="<%=i.getAddress()%>">
+                                    <label class="form-label">Địa chỉ</label><span class="text-danger"
+                                                                                   id="errEditAddress"></span>
+                                    <input type="text" class="form-control" id="editAddress" name="editAddress"
+                                           value="<%=i.getAddress()%>">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Email</label><span class="text-danger" id="errEditEmail"></span>
-                                    <input type="text" class="form-control" id="editEmail" name="editEmail" value="<%=i.getEmail()%>" >
+                                    <label class="form-label">Email</label><span class="text-danger"
+                                                                                 id="errEditEmail"></span>
+                                    <input type="text" class="form-control" id="editEmail" name="editEmail"
+                                           value="<%=i.getEmail()%>">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Số điện thoại</label><span class="text-danger" id="errEditPhoneNumber"></span>
-                                    <input type="text" class="form-control" id="editPhoneNumber" name="editPhoneNumber" value="<%=i.getPhoneNumber()%>" >
+                                    <label class="form-label">Số điện thoại</label><span class="text-danger"
+                                                                                         id="errEditPhoneNumber"></span>
+                                    <input type="text" class="form-control" id="editPhoneNumber" name="editPhoneNumber"
+                                           value="<%=i.getPhoneNumber()%>">
                                 </div>
                             </div>
                             <div class="row p-0">
@@ -194,47 +207,49 @@
 <!--end footer-->
 <script>
     $(document).ready(function () {
-        if($('#res').text() !== "") {
+        if ($('#res').text() !== "") {
             alert($('#res').text());
         }
     })
-    function  editGua() {
+
+    function editGua() {
         var monthGua = document.getElementById("monthGua");
         var monthChange = document.getElementById("monthChange");
 
         var flag = true;
 
-        if(monthGua.value === "") {
+        if (monthGua.value === "") {
             flag = false;
             monthGua.style.borderColor = 'red';
-        }else {
+        } else {
             monthGua.style.borderColor = '#dee2e6';
         }
-        if(monthChange.value === "") {
+        if (monthChange.value === "") {
             flag = false;
             monthChange.style.borderColor = 'red';
-        }else {
+        } else {
             monthChange.style.borderColor = '#dee2e6';
         }
-        if(monthGua.value <0){
+        if (monthGua.value < 0) {
             flag = false;
             monthGua.style.borderColor = 'red';
-        }else{
+        } else {
             monthGua.style.borderColor = '#dee2e6';
         }
-        if(monthChange.value < 0 ){
+        if (monthChange.value < 0) {
             flag = false;
             monthChange.style.borderColor = 'red';
-        }else{
+        } else {
             monthChange.style.borderColor = '#dee2e6';
         }
         return flag;
     }
+
     function editContact() {
 
         var address = document.getElementById("editAddress");
         var email = document.getElementById("editEmail");
-        var phone =document.getElementById("editPhoneNumber");
+        var phone = document.getElementById("editPhoneNumber");
 
         var errorAddress = document.getElementById("errEditAddress");
         var errEditEmail = document.getElementById("errEditEmail");
@@ -244,28 +259,28 @@
         var emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         var tellReg = /^\d{10}$/;
 
-        if(address.value === "") {
-            errorAddress.innerHTML ='*Vui lòng nhập địa chỉ!'
+        if (address.value === "") {
+            errorAddress.innerHTML = '*Vui lòng nhập địa chỉ!'
             flag = false;
-        }else {
-            errorAddress.innerHTML ='';
+        } else {
+            errorAddress.innerHTML = '';
         }
-        if(email.value === "") {
-            errEditEmail.innerHTML ='*Vui lòng nhập email!'
+        if (email.value === "") {
+            errEditEmail.innerHTML = '*Vui lòng nhập email!'
             flag = false;
-        }else if(!email.value.match(emailReg)){
-            errEditEmail.innerHTML ='*Email không hợp lệ!';
+        } else if (!email.value.match(emailReg)) {
+            errEditEmail.innerHTML = '*Email không hợp lệ!';
             flag = false;
-        }else{
+        } else {
             errEditEmail.innerHTML = '';
         }
-        if(phone.value === "") {
-            errEditPhoneNumber.innerHTML ='*Vui lòng nhập số điện thoại!'
+        if (phone.value === "") {
+            errEditPhoneNumber.innerHTML = '*Vui lòng nhập số điện thoại!'
             flag = false;
-        }else if(!phone.value.match(tellReg)){
-            errEditPhoneNumber.innerHTML ='*Số điện thoại không hợp lệ!';
+        } else if (!phone.value.match(tellReg)) {
+            errEditPhoneNumber.innerHTML = '*Số điện thoại không hợp lệ!';
             flag = false;
-        }else{
+        } else {
             errEditPhoneNumber.innerHTML = '';
         }
         return flag;

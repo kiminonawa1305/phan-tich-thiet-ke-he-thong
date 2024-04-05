@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-@WebServlet(name = "editProduct", value = "/editProduct")
+@WebServlet(name = "EditProduct", value = "/edit-product")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 50)

@@ -1,5 +1,4 @@
 <%@ page import="java.util.Date" %>
-<%@ page import="java.io.Serializable" %>
 <%@ page import="model.Account" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -32,16 +31,13 @@
     <link rel="stylesheet" href="css/ChangeInfor.css">
 </head>
 <body>
-<%
-    String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-            + request.getContextPath();
-%>
 <header class="hd">
     <div class="container-fluid bgcolor-orange">
         <div class="container ">
             <div class="row ">
                 <div class="col-md-9 col-sm-9 col-8 col-4 d-flex align-items-center  ">
-                    <a class="nav-link" href="<%=url%>/homePage"> <img style="width: 150px" src="image/logoWeb.png">
+                    <a class="nav-link" href="home-page"> <img alt="logoWeb.png" style="width: 150px"
+                                                               src="image/logoWeb.png">
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-3 col-4 py-3 px-0 d-flex align-items-center justify-content-end">
@@ -80,7 +76,7 @@
         String res = (String) request.getAttribute("res");
         res = (res == null) ? "" : res;
     %>
-    <form id="changeNam" onsubmit="return check()" action="changeInfo" method="post">
+    <form id="changeNam" onsubmit="return check()" action="change-info" method="post">
         <table>
             <thead>
             <tr>
@@ -95,12 +91,11 @@
             <tbody>
             <tr>
                 <td colspan="2">
-                    <%
-                        if (account.getVerifyAccount().isStateVerify()) {%>
+                    <%if (account.getVerifyAccount().isStateVerify()) {%>
                     <label class="w-100">Tài khoản đã xác thực <i class="fa fa-check-circle text-success"
                                                                   aria-hidden="true"></i></label>
                     <%} else {%>
-                    <label class="w-100 ">Tài khoản của bạn chưa xác thực, <a href="<%=url%>/reVerifyCode">xác thực
+                    <label class="w-100 ">Tài khoản của bạn chưa xác thực, <a href="re-verify-code">xác thực
                         ngay</a></label>
                     <%}%>
                 </td>
@@ -195,7 +190,7 @@
 </div>
 <script>
     $(document).ready(function () {
-        var res = $('#res');
+        let res = $('#res');
         if (res.text() === "Cập nhật thành công!") {
             res.addClass("text-success");
         } else {
@@ -204,35 +199,35 @@
     });
 
     function check() {
-        var flag = true;
-        var tenElement = document.getElementById("HienThiTen");
-        var gmailElement = document.getElementById("HienThiGmail");
-        var sdtElement = document.getElementById("HienThiSDT");
-        var dcElement = document.getElementById("HienThiDC");
-        var nsElement = document.getElementById("HienThiNS");
-        var error = document.getElementById("res");
+        let flag = true;
+        let tenElement = document.getElementById("HienThiTen");
+        let gmailElement = document.getElementById("HienThiGmail");
+        let sdtElement = document.getElementById("HienThiSDT");
+        let dcElement = document.getElementById("HienThiDC");
+        let nsElement = document.getElementById("HienThiNS");
+        let error = document.getElementById("res");
 
-        var gmailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        var phoneReg = /^\d{10}/;
-        if (tenElement.value == "") {
+        let gmailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        let phoneReg = /^\d{10}/;
+        if (tenElement.value) {
             error.innerHTML = "Vui lòng nhập họ và tên!";
             flag = false;
-        } else if (gmailElement.value == "") {
+        } else if (gmailElement.value) {
             error.innerHTML = "Vui lòng nhập Email!";
             flag = false;
         } else if (!gmailElement.value.match(gmailReg)) {
             error.innerHTML = "Email không hợp lệ!";
             flag = false;
-        } else if (sdtElement.value == "") {
+        } else if (sdtElement.value) {
             error.innerHTML = "Vui lòng nhập số điện thoại!";
             flag = false;
         } else if (!sdtElement.value.match(phoneReg)) {
             error.innerHTML = "Số điện thoại không hợp lệ!";
             flag = false;
-        } else if (dcElement.value == "") {
+        } else if (dcElement.value) {
             error.innerHTML = "Vui lòng nhập địa chỉ!";
             flag = false;
-        } else if (nsElement.value == "") {
+        } else if (nsElement.value) {
             error.innerHTML = "Vui lòng chọn ngày sinh!";
             flag = false;
         }

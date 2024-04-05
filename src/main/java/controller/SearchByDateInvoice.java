@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 
-@WebServlet(name = "SearchByDate", value = "/searchByDate")
+@WebServlet(name = "SearchByDateInvoice", value = "/search-by-date")
 public class SearchByDateInvoice extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

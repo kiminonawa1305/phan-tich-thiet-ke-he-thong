@@ -45,10 +45,6 @@
 <!--end header-->
 <!--Chi tiết sản phẩm-->
 <%
-    String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-            + request.getContextPath();
-%>
-<%
     NumberFormat nF = NumberFormat.getCurrencyInstance();
     Cart cart = (Cart) session.getAttribute("Cart");
     Product product = (Product) request.getAttribute("product");
@@ -56,9 +52,9 @@
 %>
 <div class="container-fluid mgt">
     <div class="container">
-        <a href="<%=url%>/homePage" class="color-gray lbhv text-decoration-none">Trang chủ <i
+        <a href="home-page" class="color-gray lbhv text-decoration-none">Trang chủ <i
                 class="fa fa-angle-right color-gray" aria-hidden="true"></i> </a>
-        <a href="<%=url%>/product" class="color-gray lbhv text-decoration-none">Sản phẩm <i
+        <a href="product" class="color-gray lbhv text-decoration-none">Sản phẩm <i
                 class="fa fa-angle-right color-gray" aria-hidden="true"> </i></a>
         <span class="text-color"><%=product.getName()%></span>
     </div>
@@ -78,7 +74,7 @@
                     <div class="col-lg-5 col-md-7  ">
                         <div class="row pt-3">
                             <div class="col-md-12">
-                                <img src="<%=url%>\Products\<%=(product.getImages().isEmpty())?"":product.getImages().get(0).getUrl()%>"
+                                <img src="products\<%=(product.getImages().isEmpty())?"":product.getImages().get(0).getUrl()%>"
                                      class="card-img-top img_p" id="img_center" alt="...">
                             </div>
                             <div class="col-md-12 mt-3">
@@ -86,8 +82,8 @@
                                     <%
                                         for (Image img : product.getImages()) { %>
                                     <div class="pe-2">
-                                        <img src="<%=url%>/Products/<%=img.getUrl()%>" alt="" class="img_p_detail"
-                                             onmouseover="changeImg('<%=url%>/Products/<%=img.getUrl()%>')">
+                                        <img src="products/<%=img.getUrl()%>" alt="" class="img_p_detail"
+                                             onmouseover="changeImg('products/<%=img.getUrl()%>')">
                                     </div>
                                     <%}%>
                                 </div>
@@ -137,14 +133,14 @@
                                                     quantity = product.getQuantity();
                                                 }
                                             %>
-                                            <a href="<%=url%>/cartController?id=<%=product.getIdProduct()%>&quantity=<%=quantity%>">
+                                            <a href="cart-controller?id=<%=product.getIdProduct()%>&quantity=<%=quantity%>">
                                                 <button type="button">Thêm vào giỏ hàng <i
                                                         class="fa fa-shopping-cart cart"></i></button>
                                             </a>
 
                                         </div>
                                         <div class="ms-3 pay">
-                                            <a href="<%=url%>/PaymentBuyNow?id=<%=product.getIdProduct()%>&quantity=1"
+                                            <a href="payment-buy-now?id=<%=product.getIdProduct()%>&quantity=1"
                                                id="buy-now-link">
                                                 <button id="buynow">Mua ngay</button>
                                             </a>
@@ -184,8 +180,8 @@
                 <h5 class="m-0 text-center" id="titleCate">SẢN PHẨM TƯƠNG TỰ</h5>
                 <hr class="mt-2 mb-2"/>
                 <div class="card">
-                    <a href="<%=url%>/detail-product?pid=<%=productSimilar.getIdProduct()%>&cid=<%=productSimilar.getIdCate()%>">
-                        <img src="<%=url%>\Products\<%=(productSimilar.getImages().isEmpty())?"":productSimilar.getImages().get(0).getUrl()%>"
+                    <a href="detail-product?pid=<%=productSimilar.getIdProduct()%>&cid=<%=productSimilar.getIdCate()%>">
+                        <img src="products\<%=(productSimilar.getImages().isEmpty())?"":productSimilar.getImages().get(0).getUrl()%>"
                              class="card-img-top img_p" alt="...">
                     </a>
                     <div class="card-body">
@@ -204,7 +200,7 @@
                                 qty = productSimilar.getQuantity();
                             }
                         %>
-                        <a href="<%=url%>/cartController?id=<%=productSimilar.getIdProduct()%>&quantity=<%=qty%>"><i
+                        <a href="cart-controller?id=<%=productSimilar.getIdProduct()%>&quantity=<%=qty%>"><i
                                 class="fa fa-shopping-cart cart" aria-hidden="true" title="Thêm vào giỏ hàng"></i></a>
                     </div>
                 </div>
@@ -222,31 +218,30 @@
 </body>
 <script>
     function changeImg(newSrc) {
-        var img_center = document.getElementById('img_center');
+        let img_center = document.getElementById('img_center');
         console.log(newSrc)
         img_center.src = newSrc;
     }
 
     $(document).ready(function () {
         $(".owl-carousel").owlCarousel();
-        var count = 1;
-        var increase = $('#increase');
-        var decrease = $('#decrease');
-        var amount = $('#amount');
-        var url = "<%=url%>";
-        var productId =<%=product.getIdProduct()%>;
-        var buynowlink = document.getElementById("buy-now-link");
+        let count = 1;
+        let increase = $('#increase');
+        let decrease = $('#decrease');
+        let amount = $('#amount');
+        let productId =<%=product.getIdProduct()%>;
+        let buynowlink = document.getElementById("buy-now-link");
         increase.click(function () {
             count++;
             amount.val(count);
-            buynowlink.href = `${url}/PaymentBuyNow?id=${productId}&quantity=${count}`
+            buynowlink.href = `payment-buy-now?id=${productId}&quantity=${count}`
         })
         decrease.click(function () {
             if (count > 1) {
                 count--;
             }
             amount.val(count);
-            buynowlink.href = `${url}/PaymentBuyNow?id=${productId}&quantity=${count}`
+            buynowlink.href = `payment-buy-now?id=${productId}&quantity=${count}`
         })
 
     })
@@ -254,7 +249,7 @@
     function checkQuantity(event) {
         // Lấy giá trị của input
         const inputValue = document.getElementById("amount").value;
-        var quantityAvai =<%=product.getQuantityAvailable()%>;
+        let quantityAvai =<%=product.getQuantityAvailable()%>;
         // Kiểm tra nếu input lớn hơn quantityAvai
         if (parseInt(inputValue) > quantityAvai) {
             // Không cho đi

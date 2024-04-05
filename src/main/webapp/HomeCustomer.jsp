@@ -136,12 +136,12 @@
                                             Account account = null;
                                             if(object != null)
                                                 account = (Account) object;
-                                            if(account == null){
-                                        %>
+                                        %>if(account == null){
+
                                         <a href="SignIn.jsp"> Đăng nhập </a>
-                                        <%
-                                            }else{
-                                        %>
+
+                                        }else{
+
                                         <li class="nav-item hv pe-2"><a class="nav-link" href="#"><button class = "position-relative border-0 bg-light "><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 25px"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">99+<span class="visually-hidden">unread messages</span></span>
                                         </button> </a> </li>
                                         <li class="nav-item dropdown hv  d-flex align-items-center"><a
@@ -165,7 +165,7 @@
                                                 <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
                                             </ul>
                                         </li>
-                                        <% }%>
+                                        }<%%>
 
                                     </ul>
 
@@ -521,7 +521,7 @@
     $(document).ready(function () {
         // ẩn hiện thanh danh mục
         $('#cate').click(function () {
-            var typeChair = $('#typeChair');
+            let typeChair = $('#typeChair');
             if (typeChair.css("display") === "none") {
                 typeChair.css("display", "block");
             } else {
@@ -530,7 +530,7 @@
         })
         // chuyển hướng tới mục chính sách mua hàng trong trang giới thiệu
         if (window.location.hash === "#policy") {
-            var targetElement = $('#policy');
+            let targetElement = $('#policy');
             if (targetElement.length > 0) {
                 $('html, body').animate({
                     scrollTop: targetElement.offset().top
@@ -539,7 +539,7 @@
         }
         // chuyển hướng tới mục thông tin liên hệ
         if (window.location.hash === "#contact") {
-            var targetElement = $('#contact');
+            let targetElement = $('#contact');
 
             if (targetElement.length > 0) {
                 $('html, body').animate({

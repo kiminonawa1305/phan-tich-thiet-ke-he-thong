@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "AddSupplier", value = "/AddSupplier")
+@WebServlet(name = "AddSupplier", value = "/add-supplier")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 50)

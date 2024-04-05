@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name = "cancelInvoiceCus", value = "/cancelInvoiceCus")
-public class CanceltInvoiceCus extends HttpServlet {
+@WebServlet(name = "CancelInvoice", value = "/cancel-invoice")
+public class CancelInvoice extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -26,19 +26,27 @@ public class CanceltInvoiceCus extends HttpServlet {
         String res = "";
         if (InvoiceService.getInstance().updateStatus(id, 2) > 0) {
             InvoiceService.getInstance().backQuantity(id);
-             res = "Đã hủy đơn hàng!";
+            res = "Đã hủy đơn hàng!";
         } else {
             res = "Đã xảy ra lỗi!";
         }
         JSONObject jsonResponse = new JSONObject();
         JSONArray htmlDataArray = new JSONArray();
-        ArrayList<Invoice> listInvoice = InvoiceService.getInstance().getListByStatus(0);
+        ArrayList<Invoice> listInvoice = InvoiceService.getInstance().listInvoice();
         for (Invoice i : listInvoice) {
             JSONObject invoiceJSON = new JSONObject();
             invoiceJSON.put("id", i.getIdInvoice());
             invoiceJSON.put("idAccount", i.getIdAccount());
             invoiceJSON.put("startDate", i.getStartDate());
-            invoiceJSON.put("totalPrice", i.totalPrice());
+            String status ="";
+            if(i.getStatus() == 0) {
+                status = "Chờ xác nhận";
+            }else if(i.getStatus() == 1) {
+                status ="Đã xác nhận";
+            }else {
+                status = "Đã hủy";
+            }
+            invoiceJSON.put("status", status);
             htmlDataArray.put(invoiceJSON);
         }
         jsonResponse.put("htmlData", htmlDataArray);

@@ -52,7 +52,6 @@
 </header>
 <section class="signup mt-5">
     <%
-        String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         String email = (String) request.getAttribute("email");
         String err = (String) request.getAttribute("errCode");
         email = (email == null) ? " " : email;
@@ -60,11 +59,11 @@
     %>
     <div class="contain">
         <div class="signup-content">
-            <form id="verify-form" class="signup-form" action="<%=url%>/verifyAccount" method="post"
+            <form id="verify-form" class="signup-form" action="verify-account" method="post"
                   onsubmit="return verifyAccount()">
                 <div class="text-end pe-4">
                     <%Object obj = session.getAttribute("account");%>
-                    <a class="text-decoration-none" href="<%=url%>/<%=(obj==null)?"SignIn.jsp":"homePage"%>">Bỏ qua</a>
+                    <a class="text-decoration-none" href="<%=(obj==null)?"SignIn.jsp":"home-page"%>">Bỏ qua</a>
                 </div>
                 <img src="images/verify.jpg" alt="" width="400px">
                 <h5>Xác thực tài khoản của bạn</h5>
@@ -80,7 +79,7 @@
                                id="verify"/>
                     </div>
                     <p class="text-group">
-                        <a href="<%=url%>/reVerifyCode?email=<%=email%>">Nhấn vào đây</a>
+                        <a href="reVerifyCode?email=<%=email%>">Nhấn vào đây</a>
                         để nhận lại mã xác thực
                     </p>
                 </div>

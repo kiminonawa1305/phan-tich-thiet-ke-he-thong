@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-@WebServlet(name = "loadProductByName", value = "/loadProductByName")
+@WebServlet(name = "LoadProductByName", value = "/load-product-by-name")
 public class LoadProductByName extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");

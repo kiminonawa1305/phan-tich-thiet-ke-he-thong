@@ -27,14 +27,12 @@
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
-<% String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-%>
 <header class="hd">
     <div class="container-fluid bgcolor-orange">
         <div class="container ">
             <div class="row ">
                 <div class="col-md-9 col-sm-9 col-8 col-4 d-flex align-items-center  ">
-                    <a class="nav-link" href="#"> <img style="width: 150px" src="image/logoWeb.png">
+                    <a class="nav-link" href="./"> <img style="width: 150px" src="image/logoWeb.png">
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-3 col-4 py-3 px-0 d-flex align-items-center justify-content-end">
@@ -62,7 +60,7 @@
         String err = (String) request.getAttribute("err");
         err = (err == null) ? "" : err;
     %>
-    <form id="form-login" action="signInAccount" onsubmit="return my_submit()" method="post">
+    <form id="form-login" action="sign-in-account" onsubmit="return my_submit()" method="post">
         <div id="imgHinh">
             <img src="image/logo.png">
         </div>
@@ -79,13 +77,13 @@
                        value="<%=password%>">
             </div>
             <div class="form-group-p" id="idFPass">
-                <p id="idMK"><a href=<%=url%>/ForgetPW.jsp>Quên mật khẩu?</a></p>
+                <p id="idMK"><a href='ForgetPW.jsp'>Quên mật khẩu?</a></p>
             </div>
             <div>
                 <button id="submitDangNhap">ĐĂNG NHẬP</button>
             </div>
             <div class="form-group-p" id="idDK">
-                <p>Bạn chưa có tài khoản?<a href="<%=url%>/SignUp.jsp"> Đăng ký</a></p>
+                <p>Bạn chưa có tài khoản?<a href="SignUp.jsp"> Đăng ký</a></p>
             </div>
         </div>
     </form>

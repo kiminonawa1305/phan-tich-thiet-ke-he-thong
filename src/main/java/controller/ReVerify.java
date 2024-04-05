@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-@WebServlet(name = "reVerifyCode", value = "/reVerifyCode")
+@WebServlet(name = "ReVerify", value = "/re-verify-code")
 public class ReVerify extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");

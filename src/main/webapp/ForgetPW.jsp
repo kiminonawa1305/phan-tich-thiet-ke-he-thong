@@ -28,15 +28,12 @@
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
-<%
-    String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-%>
 <header>
     <div class="container-fluid bgcolor-orange">
         <div class="container ">
             <div class="row ">
                 <div class="col-md-9 col-sm-9 col-8 col-4 d-flex align-items-center  ">
-                    <a class="nav-link" href="<%=url%>/homePage"> <img style="width: 150px" src="image/logoWeb.png">
+                    <a class="nav-link" href="./"> <img style="width: 150px" src="image/logoWeb.png">
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-3 col-4 py-3 px-0 d-flex align-items-center justify-content-end">
@@ -59,7 +56,7 @@
     String done = (String) request.getAttribute("done");
     if (done != null) {
 %>
-<div class="container p-0 mgt text-center fw-bold">Mật khẩu mới của bạn đã được gửi về Mail!<a href=<%=url%>/SignIn.jsp>Đăng
+<div class="container p-0 mgt text-center fw-bold">Mật khẩu mới của bạn đã được gửi về Mail!<a href=intro-websiteSignIn.jsp>Đăng
     nhập</a></div>
 
 <%
@@ -69,7 +66,7 @@
     <!-- <img src="images/signup-bg.jpg" alt=""> -->
     <div class="contain">
         <div class="signup-content">
-            <form id="signup-form" class="signup-form" method="post" action="forgetPassword">
+            <form id="signup-form" class="signup-form" method="post" action="forget-password">
                 <%
                     String username = (String) request.getAttribute("user_name");
                     username = (username == null) ? "" : username;

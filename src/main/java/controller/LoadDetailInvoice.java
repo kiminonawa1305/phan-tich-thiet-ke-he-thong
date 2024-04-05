@@ -20,7 +20,7 @@
     import java.text.NumberFormat;
     import java.util.ArrayList;
 
-    @WebServlet(name = "loadDetailInvoice", value = "/loadDetailInvoice")
+    @WebServlet(name = "LoadDetailInvoice", value = "/load-detail-invoice")
     public class LoadDetailInvoice extends HttpServlet {
         public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
             request.setCharacterEncoding("UTF-8");

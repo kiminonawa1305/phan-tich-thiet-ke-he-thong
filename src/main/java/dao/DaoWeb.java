@@ -1,10 +1,15 @@
 package dao;
+
 import model.InforWebsite;
 import util.JDBCUtil;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Observable;
+import java.util.Observer;
+
 public class DaoWeb {
     // Lấy thông tin website
     public static InforWebsite selectByid(int id) {
@@ -28,6 +33,7 @@ public class DaoWeb {
         }
         return inforWebsite;
     }
+
     // Cập nhật chính sách
     public static synchronized int updatePolicy(InforWebsite i) throws SQLException {
         int re = 0;
@@ -49,6 +55,7 @@ public class DaoWeb {
         JDBCUtil.closeConnection(connection);
         return re;
     }
+
     // Cập nhật thông tin liên hệ
     public static synchronized int updateContact(InforWebsite i) throws SQLException {
         int re = 0;

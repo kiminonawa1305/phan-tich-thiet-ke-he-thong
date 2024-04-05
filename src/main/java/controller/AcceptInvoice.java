@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-@WebServlet(name = "AcceptInvoice", value = "/acceptInvoice")
+@WebServlet(name = "AcceptInvoice", value = "/accept-invoice")
 public class AcceptInvoice extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

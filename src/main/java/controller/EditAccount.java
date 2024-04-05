@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
-@WebServlet(name = "editAccount", value = "/editAccount")
+@WebServlet(name = "EditAccount", value = "/edit-account")
 public class EditAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

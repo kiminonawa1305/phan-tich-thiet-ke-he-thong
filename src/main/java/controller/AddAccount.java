@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
 
-@WebServlet(name = "addAccount", value = "/addAccount")
+@WebServlet(name = "AddAccount", value = "/add-account")
 public class AddAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

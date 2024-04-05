@@ -14,7 +14,7 @@
     import java.io.PrintWriter;
     import java.text.NumberFormat;
 
-    @WebServlet(name = "loadDetailProduct", value = "/loadDetailProduct")
+    @WebServlet(name = "LoadDetailProduct", value = "/load-detail-product")
     public class LoadDetailProduct extends HttpServlet {
         public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
                     // Đoạn mã hiện tại để lấy chi tiết sản phẩm...

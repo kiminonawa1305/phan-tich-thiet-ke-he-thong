@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-@WebServlet(name = "delCategory", value = "/delCategory")
-public class DelCategory extends HttpServlet {
+@WebServlet(name = "DeleteCategory", value = "/delete-category")
+public class DeleteCategory extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");

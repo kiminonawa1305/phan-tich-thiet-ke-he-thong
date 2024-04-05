@@ -14,7 +14,7 @@
     import java.util.ArrayList;
     import java.util.Arrays;
     import java.util.List;
-    @WebServlet(name = "EditCarousel", value = "/editCarousel")
+    @WebServlet(name = "EditCarousel", value = "/edit-carousel")
     @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
             maxFileSize = 1024 * 1024 * 10, // 10MB
             maxRequestSize = 1024 * 1024 * 50)

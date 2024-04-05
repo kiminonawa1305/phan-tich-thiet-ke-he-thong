@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name = "DelInvoice", value = "/delInvoice")
-public class DelInvoice extends HttpServlet {
+@WebServlet(name = "DeleteInvoice", value = "/delete-invoice")
+public class DeleteInvoice extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");

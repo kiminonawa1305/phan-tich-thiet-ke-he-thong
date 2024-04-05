@@ -13,7 +13,7 @@ import java.sql.Date;
 import java.text.NumberFormat;
 import java.util.Iterator;
 
-@WebServlet(name = "BuyNow", value = "/BuyNow")
+@WebServlet(name = "BuyNow", value = "/buy-now")
 public class BuyNow extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

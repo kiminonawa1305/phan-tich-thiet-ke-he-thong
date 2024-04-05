@@ -16,7 +16,7 @@
     import java.io.PrintWriter;
     import java.text.NumberFormat;
 
-    @WebServlet(name = "loadDetailAccount", value = "/loadDetailAccount")
+    @WebServlet(name = "LoadDetailAccount", value = "/load-detail-account")
     public class LoadDetailAccount extends HttpServlet {
         public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
             request.setCharacterEncoding("UTF-8");

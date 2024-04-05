@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.security.SecureRandom;
 
-@WebServlet(name = "forgetPassword", value = "/forgetPassword")
+@WebServlet(name = "ForgetPassword", value = "/forget-password")
 public class ForgetPassword extends HttpServlet {
     final static String lowerCase = "abcdefghijklmnopqrstuvwxyz";
     final static String upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

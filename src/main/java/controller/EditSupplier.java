@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "EditSupplier", value = "/EditSupplier")
+@WebServlet(name = "EditSupplier", value = "/edit-supplier")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 50)

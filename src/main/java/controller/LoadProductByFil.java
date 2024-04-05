@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
-@WebServlet(name = "filterProduct", value = "/filterProduct")
+@WebServlet(name = "LoadProductByFil", value = "/filter-product")
 public class LoadProductByFil extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
@@ -55,7 +55,7 @@ public class LoadProductByFil extends HttpServlet {
             JSONObject productJSON = new JSONObject();
             productJSON.put("idProduct", p.getIdProduct());
             productJSON.put("idCate", p.getIdCate());
-            productJSON.put("imageUrl", url +"\\Products\\" +((p.getImages().isEmpty())?"":p.getImages().get(0).getUrl()));
+            productJSON.put("imageUrl","products\\" +((p.getImages().isEmpty())?"":p.getImages().get(0).getUrl()));
             productJSON.put("name", p.getName());
             productJSON.put("price", nF.format(p.getPrice()));
             productJSON.put("quantity", quantity);

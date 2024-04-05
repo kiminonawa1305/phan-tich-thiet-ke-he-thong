@@ -33,16 +33,12 @@
 <link rel="stylesheet" href="css/Style.css">
 <link rel="stylesheet" href="css/Cart.css">
 <body>
-<%
-    String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-%>
-<!--header-->
 <header>
     <jsp:include page="Header.jsp"></jsp:include>
 </header>
 <!--end header-->
 <div class="container mgt">
-    <a href="<%=url%>/homePage" class="color-gray lbhv text-decoration-none">Trang chủ <i
+    <a href="home-page" class="color-gray lbhv text-decoration-none">Trang chủ <i
             class="fa fa-angle-right color-gray" aria-hidden="true"></i> </a> <span class="text-color">Giỏ hàng</span>
     <% Cart cart = (Cart) session.getAttribute("Cart");
         if (cart != null && !cart.list().isEmpty()) {%>
@@ -82,7 +78,7 @@
                     <td class="w300">
                         <div class="item d-flex justify-content-center">
                             <div class="item_img">
-                                <img src="<%=url%>/Products/<%=(p.getImages().isEmpty())?"":p.getImages().get(0).getUrl()%>"
+                                <img src="products/<%=(p.getImages().isEmpty())?"":p.getImages().get(0).getUrl()%>"
                                      class="card-img-top img_p_cart" alt="..."/>
                             </div>
                             <span class="item_text"><%=p.getName()%></span>
@@ -104,7 +100,7 @@
                     <td><%=p.getQuantity()%>
                     </td>
                     <td>
-                        <form action="updateQuantity" method="post" onsubmit="return checkQuantity()">
+                        <form action="update-quantity" method="post" onsubmit="return checkQuantity()">
                             <input type="text" class="quantity" id="quantity" name="quantity"
                                    value="<%=p.getQuantity()%>"/>
                             <input type="hidden" name="id" value="<%=p.getIdProduct()%>"/>
@@ -112,7 +108,7 @@
                         </form>
                     </td>
                     <td>
-                        <form action="delProductInCart" method="post" onsubmit="return getConfirmation()">
+                        <form action="delete-product-in-cart" method="post" onsubmit="return getConfirmation()">
                             <input type="hidden" name="id" value="<%=p.getIdProduct()%>"/>
                             <button class="delete" title="Xóa sản phẩm" aria-hidden="true" data-bs-toggle="modal"
                                     data-bs-target="#delProduct"><i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -130,14 +126,14 @@
                 <span id="tt">THÀNH TIỀN: </span> <%=nF.format(cart.total())%>
             </div>
             <div class="pay my-2">
-                <a href="<%=url%>/Payment.jsp">
+                <a href="Payment.jsp">
                     <button id="btnPay">Thanh toán</button>
                 </a>
             </div>
         </div>
     </div>
     <%} else {%>
-    <div class="text-center mt-4 mb-3 fs-2 color-gray ">Giỏ hàng gì mà trống vậy nè >.<<a href="<%=url%>/product"
+    <div class="text-center mt-4 mb-3 fs-2 color-gray ">Giỏ hàng gì mà trống vậy nè >.<<a href="product"
                                                                                           class="text-color text-decoration-none fs-5">
         Lấp đầy ở đây nè ^.^</a></div>
     <div class="text-center mb-4">

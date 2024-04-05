@@ -33,10 +33,6 @@
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
-<%
-    String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-            + request.getContextPath();
-%>
 <!--header-->
 <header>
     <jsp:include page="Header.jsp"></jsp:include>
@@ -51,7 +47,7 @@
     if (listProductByName == null || listProductByName.isEmpty()) {
 %>
 <div class="container p-0 mgt">
-    <a href="<%=url%>/homePage" class="color-gray lbhv text-decoration-none">Trang chủ <i
+    <a href="home-page" class="color-gray lbhv text-decoration-none">Trang chủ <i
             class="fa fa-angle-right color-gray" aria-hidden="true"></i> </a> <span class="text-color"
                                                                                     id="sp">Sản phẩm</span>
     <span class="text-color" id="nameCate"></span>
@@ -68,11 +64,14 @@
                     </div>
                 </div>
                 <div class="typeChair" id="typeChair">
+                    <a href="./product" class="list-group-item list-group-item-action lt">
+                        Tất cả
+                    </a>
                     <%
-                        if (!listCate.isEmpty() && listCate != null) {
+                        if (listCate != null && !listCate.isEmpty()) {
                             for (Category c : listCate) {
                     %>
-                    <a href="#" class="list-group-item list-group-item-action lt"
+                    <a href="#<%=c.getId()%>" class="list-group-item list-group-item-action lt"
                        onclick="loadProductByIdCate('<%=c.getId()%>')"><%=c.getName()%>
                     </a>
                     <%
@@ -147,13 +146,13 @@
             <div class="row" id="content">
                 <%
                     ArrayList<Product> listProduct = (ArrayList<Product>) request.getAttribute("listP");
-                    if (!listProduct.isEmpty() && listProduct != null) {
+                    if (listProduct != null && !listProduct.isEmpty()) {
                         for (Product p : listProduct) {
                 %>
                 <div class="col-lg-4 col-sm-6 col-6 mt-3 product">
                     <div class="card">
-                        <a href="<%=url%>/detail-product?pid=<%=p.getIdProduct()%>&cid=<%=p.getIdCate()%>">
-                            <img src="<%=url%>\Products\<%=(p.getImages().isEmpty())?"":p.getImages().get(0).getUrl()%>"
+                        <a href="detail-product?pid=<%=p.getIdProduct()%>&cid=<%=p.getIdCate()%>">
+                            <img src="products\<%=(p.getImages().isEmpty())?"":p.getImages().get(0).getUrl()%>"
                                  class="card-img-top img_p" alt="...">
                         </a>
                         <div class="card-body">
@@ -172,7 +171,7 @@
                                     quantity = p.getQuantity();
                                 }
                             %>
-                            <a href="<%=url%>/cartController?id=<%=p.getIdProduct()%>&quantity=<%=quantity%>"><i
+                            <a href="cart-controller?id=<%=p.getIdProduct()%>&quantity=<%=quantity%>"><i
                                     class="fa fa-shopping-cart cart" aria-hidden="true"
                                     title="Thêm vào giỏ hàng"></i></a>                            </p>
                         </div>
@@ -203,8 +202,8 @@
             <%for (Product p : listProductByName) {%>
             <div class="col-md-3 col-sm-4 col-4 mt-3 product">
                 <div class="card">
-                    <a href="<%=url%>/detail-product?pid=<%=p.getIdProduct()%>&cid=<%=p.getIdCate()%>">
-                        <img src="<%=url%>\Products\<%=(p.getImages().isEmpty())?"":p.getImages().get(0).getUrl()%>"
+                    <a href="detail-product?pid=<%=p.getIdProduct()%>&cid=<%=p.getIdCate()%>">
+                        <img src="products\<%=(p.getImages().isEmpty())?"":p.getImages().get(0).getUrl()%>"
                              class="card-img-top img_p" alt="...">
                     </a>
                     <div class="card-body">
@@ -223,7 +222,7 @@
                                 quantity = p.getQuantity();
                             }
                         %>
-                        <a href="<%=url%>/cartController?id=<%=p.getIdProduct()%>&quantity=<%=quantity%>"><i
+                        <a href="cart-controller?id=<%=p.getIdProduct()%>&quantity=<%=quantity%>"><i
                                 class="fa fa-shopping-cart cart" aria-hidden="true" title="Thêm vào giỏ hàng"></i></a>
                         </p>
                     </div>
@@ -237,18 +236,18 @@
 <footer>
     <jsp:include page="Footer.jsp"></jsp:include>
 </footer>
-</body>
-<script>
-    var price = "";
-    var color = "";
-    var material = "";
-    var command = "";
-    var idCateCurrent = 0;
-    var backProduct = 0;
+
+<script type="application/javascript">
+    let price = "";
+    let color = "";
+    let material = "";
+    let command = "";
+    let idCateCurrent = 0;
+    let backProduct = 0;
     $(document).ready(function () {
         // ẩn hiện danh mục
         $('#cate').click(function () {
-            var typeChair = $('#typeChair');
+            let typeChair = $('#typeChair');
             if (typeChair.css("display") === "none") {
                 typeChair.css("display", "block");
             } else {
@@ -258,10 +257,10 @@
         $('.lt').click(function () {
             $('#sp').removeClass("text-color");
             $('#sp').addClass("color-gray")
-            var nameCate = $(this).text()
+            let nameCate = $(this).text()
             console.log(nameCate);
             $('#nameCate').html('<i class="fa fa-angle-right color-gray" aria-hidden="true"></i> ' + nameCate);
-            var unCheckedRadio = $('input[type="radio"][name="price"]:checked, input[type="radio"][name="color"]:checked, input[type="radio"][name="material"]:checked');
+            let unCheckedRadio = $('input[type="radio"][name="price"]:checked, input[type="radio"][name="color"]:checked, input[type="radio"][name="material"]:checked');
             unCheckedRadio.prop('checked', false);
             if (backProduct === idCateCurrent) {
                 $(this).css('color', 'black');
@@ -281,9 +280,9 @@
                 backProduct = idCateCurrent;
             }
         })
-        var preChecked = null;
+        let preChecked = null;
         $('input[name="price"]').click(function () {
-            var checked = $('input[name="price"]:checked');
+            let checked = $('input[name="price"]:checked');
             if (preChecked && checked.is(preChecked)) {
                 checked.prop('checked', false);
                 preChecked = null;
@@ -302,7 +301,7 @@
                 }
             } else {
                 $('#exits').removeClass("d-none");
-                var priceText = checked.val();
+                let priceText = checked.val();
                 price = priceText.replace(/[^\d]/g, ''); // Loại bỏ tất cả các ký tự không phải là số
                 command = priceText.charAt(0);
                 filterProduct(command, price, color, material, idCateCurrent);
@@ -310,7 +309,7 @@
             }
         });
         $('input[name="color"]').click(function () {
-            var checked = $('input[name="color"]:checked');
+            let checked = $('input[name="color"]:checked');
             if (preChecked && checked.is(preChecked)) {
                 checked.prop('checked', false);
                 preChecked = null;
@@ -332,7 +331,7 @@
             }
         });
         $('input[name="material"]').click(function () {
-            var checked = $('input[name="material"]:checked');
+            let checked = $('input[name="material"]:checked');
             if (preChecked && checked.is(preChecked)) {
                 checked.prop('checked', false);
                 preChecked = null;
@@ -359,7 +358,7 @@
     function filterProduct(command, price, color, material) {
         document.getElementById("loadMore").classList.add("d-none");
         $.ajax({
-            url: "filterProduct",
+            url: "filter-product",
             method: "GET",
             data: {
                 color: color,
@@ -369,17 +368,17 @@
                 idCate: idCateCurrent
             },
             success: function (data) {
-                var jsonData = JSON.parse(data);
+                let jsonData = JSON.parse(data);
 
-                var htmlData = jsonData.htmlData;
-                var productExits = jsonData.productExits;
-                var url = jsonData.url;
-                var exists = document.getElementById("exits");
+                let htmlData = jsonData.htmlData;
+                let productExits = jsonData.productExits;
+                let url = jsonData.url;
+                let exists = document.getElementById("exits");
                 exists.innerHTML = "CÓ " + productExits + " KẾT QUẢ TÌM KIẾM PHÙ HỢP";
-                var row = document.getElementById("content");
+                let row = document.getElementById("content");
                 row.innerHTML = ""; // Clear existing content
-                for (var i = 0; i < htmlData.length; i++) {
-                    var p = htmlData[i];
+                for (let i = 0; i < htmlData.length; i++) {
+                    let p = htmlData[i];
                     row.innerHTML += "<div class=\"col-lg-4 col-sm-6 mt-3 product\">\n" +
                         "                            <div class=\"card\">\n" +
                         "                                <a href=\"detail-product?pid=" + p.idProduct + "&cid=" + p.idCate + "\">\n" +
@@ -389,7 +388,7 @@
                         "                                    <h5 class=\"card-title\">" + p.name + "</h5>\n" +
                         "                                    <p class=\"card-text\">\n" +
                         "                                    <p class=\"price\">" + p.price + "\n" +
-                        "                                    <a href =\"" + url + "/cartController?id=" + p.idProduct + "&quantity=" + p.quantity + "\"><i class=\"fa fa-shopping-cart cart\" aria-hidden=\"true\" title=\"Thêm vào giỏ hàng\"></i></a>\n" +
+                        "                                    <a href =\"cart-controller?id=" + p.idProduct + "&quantity=" + p.quantity + "\"><i class=\"fa fa-shopping-cart cart\" aria-hidden=\"true\" title=\"Thêm vào giỏ hàng\"></i></a>\n" +
                         "                                    </p>\n" +
                         "                                </div>\n" +
                         "                            </div>\n" +
@@ -400,36 +399,19 @@
     }
 
     function loadMore() {
-        var count = document.getElementsByClassName("product").length;
+        let count = document.getElementsByClassName("product").length;
         $.ajax({
-            url: "loadMore",
+            url: "load-more",
             method: "GET",
             data: {
                 exits: count,
                 idCate: idCateCurrent
             },
             success: function (data) {
-                var row = document.getElementById("content");
+                let row = document.getElementById("content");
                 row.innerHTML += data;
             },
         });
-    }
-
-    function loadProductByIdCate(idCate) {
-        document.getElementById("loadMore").classList.remove("d-none")
-        document.getElementById("exits").classList.add("d-none");
-        $.ajax({
-            url: "loadProductByIdCate",
-            method: "GET",
-            data: {
-                cid: idCate
-            },
-            success: function (data) {
-                var row = document.getElementById("content");
-                row.innerHTML = data;
-            },
-        });
-        idCateCurrent = idCate;
     }
 
     function loadProduct() {
@@ -439,10 +421,33 @@
             url: "loadProduct",
             method: "GET",
             success: function (data) {
-                var row = document.getElementById("content");
+                let row = document.getElementById("content");
                 row.innerHTML = data;
             },
         });
     }
 </script>
+
+<script type="application/javascript">
+    function loadProductByIdCate(idCate) {
+        document.getElementById("loadMore").classList.remove("d-none")
+        document.getElementById("exits").classList.add("d-none");
+        $.ajax({
+            url: "load-product-by-id-cate",
+            method: "GET",
+            data: {
+                cid: idCate
+            },
+            success: function (data) {
+                let row = document.getElementById("content");
+                row.innerHTML = data;
+            },
+        });
+        idCateCurrent = idCate;
+    }
+
+    const id = window.location.hash.substring(1);
+    if (id) loadProductByIdCate(id);
+</script>
+</body>
 </html>

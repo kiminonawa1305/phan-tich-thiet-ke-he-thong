@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.security.SecureRandom;
-@WebServlet(name = "changePassword", value = "/changePassword")
+@WebServlet(name = "changePassword", value = "/change-password")
 public class ChangePassword extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

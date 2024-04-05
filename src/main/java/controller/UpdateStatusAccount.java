@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-@WebServlet(name = "updateStatusAccount", value = "/updateStatusAccount")
+@WebServlet(name = "UpdateStatusAccount", value = "/update-status-account")
 public class UpdateStatusAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

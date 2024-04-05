@@ -26,8 +26,8 @@
             request.setCharacterEncoding("UTF-8");
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json");
-            String source = "D:\\ltw\\DoAn\\DoanLTWNhom60\\src\\main\\webapp\\image\\Carousel";
-            File file = new File( source);
+            String source = "image\\Carousel";
+            File file = new File(source);
             File[] files = file.listFiles();
             JSONArray caJSON = new JSONArray();
             for (File f: files) {

@@ -1,8 +1,6 @@
 package controller;
 
 import model.Cart;
-import model.Product;
-import service.ProductService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "delProductInCart", value = "/delProductInCart")
-public class DelProductInCart extends HttpServlet {
+@WebServlet(name = "DeleteProductInCart", value = "/delete-product-in-cart")
+public class DeleteProductInCart extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");

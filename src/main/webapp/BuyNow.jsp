@@ -33,11 +33,6 @@
     <link rel="stylesheet" href="css/Payment.css">
 </head>
 <body>
-<%
-    String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-            + request.getContextPath();
-%>
-<!--header-->
 <header>
     <jsp:include page="Header.jsp"></jsp:include>
 </header>
@@ -47,7 +42,7 @@
     Account a = (Account) session.getAttribute("account");
     if (a == null) {
 %>
-<div class="container p-0 mgt text-center fw-bold">Bạn chưa đăng nhập! <a href=<%=url%>/SignIn.jsp>Đăng nhập</a></div>
+<div class="container p-0 mgt text-center fw-bold">Bạn chưa đăng nhập! <a href=SignIn.jsp>Đăng nhập</a></div>
 <%
         return;
     }
@@ -59,7 +54,7 @@
     double sumPay = 0;
     if (!a.getVerifyAccount().isStateVerify()) {
 %>
-<div class="container p-0 mgt text-center fw-bold">Bạn chưa xác thực tài khoản <a href=<%=url%>/reVerifyCode>Xác thực
+<div class="container p-0 mgt text-center fw-bold">Bạn chưa xác thực tài khoản <a href=reVerifyCode>Xác thực
     ngay</a></div>
 <%
 } else if (a != null && p != null) {
@@ -68,7 +63,7 @@
     double shippingFee = 0;
 %>
 <div class="container p-0 mgt">
-    <a href="<%=url%>/homePage" class="color-gray lbhv text-decoration-none">Trang chủ <i
+    <a href="home-page" class="color-gray lbhv text-decoration-none">Trang chủ <i
             class="fa fa-angle-right color-gray" aria-hidden="true"></i> </a> <span class="text-color">Thanh toán</span>
     <div class="row p-2 mt-3 bgcolor">
         <div class="col-lg-4 col-sm-4 my-1">
@@ -249,7 +244,7 @@
                     <td class="w300">
                         <div class="item d-flex justify-content-center">
                             <div class="item_img">
-                                <img src="<%=url%>/Products/<%=(p.getImages().isEmpty())?"":p.getImages().get(0).getUrl()%>"
+                                <img src="Products/<%=(p.getImages().isEmpty())?"":p.getImages().get(0).getUrl()%>"
                                      class="card-img-top img_p_cart" alt="..."/>
                             </div>
                             <span class="item_text"><%=p.getName()%></span>
@@ -299,7 +294,7 @@
                         </p>
                     </div>
                     <div class="pay text-end mt-2">
-                        <a href="<%=url%>/BuyNow">
+                        <a href="BuyNow">
                             <button id="btnPay">Đặt hàng</button>
                         </a>
                     </div>
@@ -312,7 +307,7 @@
 } else if ((String) session.getAttribute("doneBuyNow") != null) {
 %>
 <div class="container p-0 mgt text-center fw-bold">Đơn hàng của bạn đã được đặt. Bạn có thể kiểm tra lại đơn hàng trên
-    Email! <a href=<%=url%>/product>Mua hàng tiếp!</a></div>
+    Email! <a href=product>Mua hàng tiếp!</a></div>
 <div class="text-center mb-4">
     <img src="image/comfirm.png" alt="" class="imgbg">
 </div>

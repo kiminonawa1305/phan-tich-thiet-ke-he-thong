@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@WebServlet(name = "Payment", value = "/Payment")
+@WebServlet(name = "Payment", value = "/payment")
 public class Payment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

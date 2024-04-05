@@ -17,7 +17,7 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 
 
-@WebServlet(name = "registerAccount", value = "/registerAccount")
+@WebServlet(name = "RegisterAccount", value = "/register-account")
 public class RegisterAccount extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");

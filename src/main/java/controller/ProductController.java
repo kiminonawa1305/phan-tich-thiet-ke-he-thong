@@ -18,7 +18,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-@WebServlet(name = "product", value = "/product")
+@WebServlet(name = "ProductController", value = "/product")
 public class ProductController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");

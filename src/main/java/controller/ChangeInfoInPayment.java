@@ -10,8 +10,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Date;
 
-@WebServlet(name = "ChangeInforInPayment", value = "/ChangeInforInPayment")
-public class ChangeInforInPayment extends HttpServlet {
+@WebServlet(name = "ChangeInfoInPayment", value = "/change-info-in-payment")
+public class ChangeInfoInPayment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -50,10 +50,10 @@ public class ChangeInforInPayment extends HttpServlet {
             Object obj = session.getAttribute("account");
             Account account = (Account) obj;
             Account accountNew = new Account(account.getId(), name, email, phoneNumber, gender, birthDay, address, addressReceive);
-            VerifyAccount vrf = AccountService.getInstance().getVrfOfAccount(account.getId());
+            VerifyAccount vrf = AccountService.getInstance().getVerifyOfAccount(account.getId());
             accountNew.setVerifyAccount(vrf);
             session.setAttribute("account", accountNew);
-            if (AccountService.getInstance().updateInfor(accountNew) > 0) {
+            if (AccountService.getInstance().updateInfo(accountNew) > 0) {
                 res = "Cập nhật thành công!";
             } else {
                 res = "Cập nhật thất bại!";

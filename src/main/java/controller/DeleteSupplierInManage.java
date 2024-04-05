@@ -10,12 +10,10 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-@WebServlet(name = "DelSupplierInManage", value = "/DelSupplierInManage")
-public class DelSupplierInManage extends HttpServlet {
+@WebServlet(name = "DeleteSupplierInManage", value = "/delete-supplier-in-manage")
+public class DeleteSupplierInManage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");

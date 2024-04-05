@@ -10,16 +10,16 @@
                 <h5 class="">DANH MỤC SẢN PHẨM</h5>
                 <hr class="w-50 ">
                 <ul class="navbar-nav ">
-                    <a class="nav-link link" href="">
+                    <a class="nav-link link" href="product#1">
                         <li>Ghế văn phòng</li>
                     </a>
-                    <a class="nav-link link" href="">
+                    <a class="nav-link link" href="product#2">
                         <li>Ghế thư giãn</li>
                     </a>
-                    <a class="nav-link link" href="">
+                    <a class="nav-link link" href="product#3">
                         <li>Ghế trang trí</li>
                     </a>
-                    <a class="nav-link link" href="">
+                    <a class="nav-link link" href="product#4">
                         <li>Ghế gaming</li>
                     </a>
                 </ul>
@@ -28,16 +28,16 @@
                 <h5>VỀ CHÚNG TÔI</h5>
                 <hr class="w-50 ">
                 <ul class="navbar-nav ">
-                    <a class="nav-link link" href="introWebsite">
+                    <a class="nav-link link" href="intro-website">
                         <li>Giới thiệu</li>
                     </a>
-                    <a class="nav-link link" href="introWebsite">
+                    <a class="nav-link link" href="intro-website">
                         <li>Bảo hành</li>
                     </a>
-                    <a class="nav-link link" href="introWebsite">
+                    <a class="nav-link link" href="intro-website">
                         <li>Đổi trả</li>
                     </a>
-                    <a class="nav-link link" href="introWebsite">
+                    <a class="nav-link link" href="intro-website">
                         <li>Liên hệ</li>
                     </a>
                 </ul>
@@ -77,7 +77,7 @@
     $(document).ready(function () {
         $.ajax({
             type: "GET",
-            url: "loadFooter",
+            url: "load-footer",
             success: function (data) {
                 var i = data.inforWebSite;
                 var row = document.getElementById("contain-contact");

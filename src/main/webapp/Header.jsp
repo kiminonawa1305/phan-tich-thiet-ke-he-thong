@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <%
-    String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
     Cart cart = (Cart) session.getAttribute("Cart");
     int qtt = (cart != null) ? cart.list().size() : 0;
     String quantityItem = qtt + "";
@@ -19,7 +18,7 @@
     <div class="container ">
         <div class="row ">
             <div class="col-md-9 col-sm-9 col-8 col-4 d-flex align-items-center  ">
-                <a class="nav-link" href="#"> <img style="width: 150px" src="image/logoWeb.png">
+                <a class="nav-link" href="./"> <img style="width: 150px" src="image/logoWeb.png">
                 </a>
             </div>
             <div class="col-md-3 col-sm-3 col-4 py-3 px-0 d-flex align-items-center justify-content-end">
@@ -54,10 +53,10 @@
                             <div class="col-md-12 col-lg-3 col-sm-12">
                                 <ul class="navbar-nav w-100  mb-2 mb-lg-0">
                                     <li class="nav-item hv "><a class="nav-link ps-0 " aria-current="page"
-                                                                href=<%=url%>/homePage>Trang chủ</a></li>
-                                    <li class="nav-item hv"><a class="nav-link" href="<%=url%>/introWebsite">Giới
+                                                                href=home-page>Trang chủ</a></li>
+                                    <li class="nav-item hv"><a class="nav-link" href="intro-website">Giới
                                         thiệu</a></li>
-                                    <li class="nav-item hv"><a class="nav-link" href="<%=url%>/product">Sản phẩm</a>
+                                    <li class="nav-item hv"><a class="nav-link" href="product">Sản phẩm</a>
                                     </li>
                                     <li class="nav-item hv d-lg-none ">
                                         <ul class="navbar-nav justify-content-end ">
@@ -68,12 +67,12 @@
                                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                                    data-bs-toggle="dropdown" aria-expanded="false">Tài khoản </a>
                                                 <ul class="dropdown-menu" aria-labelledby="">
-                                                    <li><a class="dropdown-item" href="<%=url%>/SignIn.jsp">Đăng
+                                                    <li><a class="dropdown-item" href="SignIn.jsp">Đăng
                                                         nhập</a></li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
-                                                    <li><a class="dropdown-item" href="<%=url%>/SignUp.jsp">Đăng kí</a>
+                                                    <li><a class="dropdown-item" href="SignUp.jsp">Đăng kí</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -93,21 +92,21 @@
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
-                                                    <li><a class="dropdown-item" href="<%=url%>/manage">Quản lý</a></li>
+                                                    <li><a class="dropdown-item" href="manage">Quản lý</a></li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
-                                                    <li><a class="dropdown-item" href="<%=url%>/ChangeInfor.jsp">Thay
+                                                    <li><a class="dropdown-item" href="ChangeInfor.jsp">Thay
                                                         đổi thông tin</a></li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
-                                                    <li><a class="dropdown-item" href="<%=url%>/ChangePW.jsp">Đổi mật
+                                                    <li><a class="dropdown-item" href="ChangePW.jsp">Đổi mật
                                                         khẩu</a></li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
-                                                    <li><a class="dropdown-item" href="<%=url%>/signOut">Đăng xuất</a>
+                                                    <li><a class="dropdown-item" href="signOut">Đăng xuất</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -123,22 +122,22 @@
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
-                                                    <li><a class="dropdown-item" href="<%=url%>/history">Lịch sử mua
+                                                    <li><a class="dropdown-item" href="history">Lịch sử mua
                                                         hàng</a></li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
-                                                    <li><a class="dropdown-item" href="<%=url%>/ChangeInfor.jsp">Thay
+                                                    <li><a class="dropdown-item" href="ChangeInfor.jsp">Thay
                                                         đổi thông tin</a></li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
-                                                    <li><a class="dropdown-item" href="<%=url%>/ChangePW.jsp">Đổi mật
+                                                    <li><a class="dropdown-item" href="ChangePW.jsp">Đổi mật
                                                         khẩu</a></li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
-                                                    <li><a class="dropdown-item" href="<%=url%>/signOut">Đăng xuất</a>
+                                                    <li><a class="dropdown-item" href="signOut">Đăng xuất</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -152,7 +151,7 @@
                                 </ul>
                             </div>
                             <div class="col-lg-7 col-sm-8 col-8 bd-full  rounded-2 d-md-none d-sm-none d-none d-lg-block">
-                                <form action="<%=url%>/loadProductByName" method="get">
+                                <form action="load-product-by-name" method="get">
                                     <div class="form-search">
                                         <input class="form-control border-0 search" type="text" value=""
                                                aria-label="Search" name="search">
@@ -164,7 +163,7 @@
                             </div>
                             <div class="col-lg-2  d-lg-block d-md-none d-none ">
                                 <ul class="navbar-nav justify-content-end">
-                                    <li class="nav-item hv pe-2"><a class="nav-link" href="<%=url%>/Cart.jsp">
+                                    <li class="nav-item hv pe-2"><a class="nav-link" href="Cart.jsp">
                                         <button class="position-relative border-0 bg-light "><i
                                                 class="fa fa-shopping-cart" aria-hidden="true"
                                                 style="font-size: 25px"></i><span
@@ -179,11 +178,11 @@
                                             class="nav-link dropdown-toggle" href="#" role="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">Tài khoản </a>
                                         <ul class="dropdown-menu" aria-labelledby="">
-                                            <li><a class="dropdown-item" href="<%=url%>/SignIn.jsp">Đăng nhập</a></li>
+                                            <li><a class="dropdown-item" href="SignIn.jsp">Đăng nhập</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="<%=url%>/SignUp.jsp">Đăng kí</a></li>
+                                            <li><a class="dropdown-item" href="SignUp.jsp">Đăng kí</a></li>
                                         </ul>
                                     </li>
 
@@ -202,21 +201,21 @@
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="<%=url%>/manage">Quản lý</a></li>
+                                            <li><a class="dropdown-item" href="manage">Quản lý</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="<%=url%>/ChangeInfor.jsp">Thay đổi thông
+                                            <li><a class="dropdown-item" href="ChangeInfor.jsp">Thay đổi thông
                                                 tin</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="<%=url%>/ChangePW.jsp">Đổi mật khẩu</a>
+                                            <li><a class="dropdown-item" href="ChangePW.jsp">Đổi mật khẩu</a>
                                             </li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="<%=url%>/signOut">Đăng xuất</a></li>
+                                            <li><a class="dropdown-item" href="signOut">Đăng xuất</a></li>
                                         </ul>
                                     </li>
                                     <%} else {%>
@@ -230,22 +229,22 @@
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="<%=url%>/history">Lịch sử mua hàng</a>
+                                            <li><a class="dropdown-item" href="history">Lịch sử mua hàng</a>
                                             </li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="<%=url%>/ChangeInfor.jsp">Thay đổi thông
+                                            <li><a class="dropdown-item" href="ChangeInfor.jsp">Thay đổi thông
                                                 tin</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="<%=url%>/ChangePW.jsp">Đổi mật khẩu</a>
+                                            <li><a class="dropdown-item" href="ChangePW.jsp">Đổi mật khẩu</a>
                                             </li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="<%=url%>/signOut">Đăng xuất</a></li>
+                                            <li><a class="dropdown-item" href="signOut">Đăng xuất</a></li>
                                         </ul>
                                     </li>
                                     <%
@@ -262,7 +261,7 @@
             <div class="col-md-10 col-sm-10 col-10 d-lg-none " style="padding: 11px 0">
                 <div class="row">
                     <div class="col-md-10 col-sm-10 col-10 bd-full rounded-2   ">
-                        <form action="<%=url%>/loadProductByName" method="get">
+                        <form action="load-product-by-name" method="get">
                             <div class="form-search">
                                 <input class="form-control border-0 search" type="text " aria-label="Search" value=""
                                        name="search">
